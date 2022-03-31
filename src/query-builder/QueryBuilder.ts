@@ -27,7 +27,6 @@ import {WhereClause, WhereClauseCondition} from "./WhereClause";
 import {NotBrackets} from "./NotBrackets";
 import {ReturningType} from "../driver/Driver";
 import {v4 as uuidv4} from "uuid";
-import {camelCase} from "../util/StringUtils";
 
 
 // todo: completely cover query builder with tests
@@ -112,7 +111,7 @@ export abstract class QueryBuilder<Entity> {
             this.expressionMap = new QueryExpressionMap(this.connection);
         }
 
-        this.uniqueDiscriminatorParam = camelCase(`discriminator${uuidv4().split('-').join('')}`);
+        this.uniqueDiscriminatorParam = `discriminator${uuidv4().split('-').join('')}`;
     }
 
     private readonly uniqueDiscriminatorParam: string;
