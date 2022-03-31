@@ -21,8 +21,7 @@ import {OracleDriver} from "../driver/oracle/OracleDriver";
 import {EntitySchema} from "../entity-schema/EntitySchema";
 import {FindOperator} from "../find-options/FindOperator";
 import {In} from "../find-options/operator/In";
-import {EntityColumnNotFound} from "../error/EntityColumnNotFound";
-import {TypeORMError} from "../error";
+import {EntityColumnNotFound, TypeORMError} from "../error";
 import {WhereClause, WhereClauseCondition} from "./WhereClause";
 import {NotBrackets} from "./NotBrackets";
 import {ReturningType} from "../driver/Driver";
@@ -111,7 +110,7 @@ export abstract class QueryBuilder<Entity> {
             this.expressionMap = new QueryExpressionMap(this.connection);
         }
 
-        this.uniqueDiscriminatorParam = `discriminator${uuidv4().split('-').join('')}`;
+        this.uniqueDiscriminatorParam = `discriminator${uuidv4().split("-").join("")}`;
     }
 
     private readonly uniqueDiscriminatorParam: string;
